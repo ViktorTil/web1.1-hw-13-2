@@ -1,0 +1,28 @@
+{% extends "quotes/base.html" %} {% block content %}
+<h1>New Author</h1>
+<form action="{% url 'quotes:add_author' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label class="form-label">Author's name</label>
+    {{form.fullname}}
+    <span>{{ form.errors.fullname }}</span>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Day's of born</label>
+    {{form.born_date}}
+    <span>{{ form.errors.born_date }}</span>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Plays of born</label>
+    {{form.born_location}}
+    <span>{{ form.errors.born_location }}</span>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Description</label>
+    {{form.description}}
+    <span>{{ form.errors.description }}</span>
+  </div>   
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="reset" class="secondary">Reset</button>
+</form>
+{% endblock %}
